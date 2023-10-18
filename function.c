@@ -25,6 +25,7 @@ int print_char(va_list types, char buffer[],
 /**
  * print_string - Prints a string
  * @types: List of arguments
+ * @buffer: Buffer array to handle print
  * @flags: Calculates active flags
  * @width: Width
  * @precision: Precision specification
@@ -57,6 +58,7 @@ int print_string(va_list types, char buffer[],
 	if (width > length && !(flags & F_MINUS))
 	{
 		int i;
+
 		for (i = width - length; i > 0; i--)
 			write(1, " ", 1);
 	}
@@ -65,6 +67,7 @@ int print_string(va_list types, char buffer[],
 	if (width > length && (flags & F_MINUS))
 	{
 		int i;
+
 		for (i = width - length; i > 0; i--)
 			write(1, " ", 1);
 	}
@@ -177,6 +180,7 @@ int print_binary(va_list types, char buffer[],
 		if (a[i] || i == 31)
 		{
 			char z = '0' + a[i];
+
 			write(1, &z, 1);
 			count++;
 		}
